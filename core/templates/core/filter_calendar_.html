@@ -1,0 +1,26 @@
+{% block filter %}
+<div class="clearfix">
+
+<aside class="app-sidebar">
+	<form action ="{% url  'core:filterwinkel'  %}" method = "get"> {% csrf_token %}
+	   
+		{% for winkel in winkels %}
+			<div class="clearfix">
+				<a class="treeview-item" href="{% url  'core:filterwinkel' %}?winkel={{ winkel.pk }}">
+					<input   type="checkbox" class = "checked" name = "winkel" value="{{winkel.pk}}">
+					
+				<span  class="form-check-label" >{{ winkel.name }}</span></a>
+
+				
+
+				
+			</div>
+			
+		{%endfor%}
+		<button type="submit" class="btn btn-info left"> Find </button>
+		<button type="submit" class="btn btn-info left"><a class="treeview-item" href="{% url  'core:calendar' %}">Filter wissen</a> </button>
+		<button type="submit" class="btn btn-info left"><a class="treeview-item" href="{% url  'core:sepautoservice' %}">sepautoservice</a> </button>
+	</form>
+  </aside>
+</div>
+{% endblock %} 

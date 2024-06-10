@@ -1,0 +1,49 @@
+{% extends 'core/filter_calendar.html' %}
+
+
+{% block content %}
+<!--{% block filter %}
+<div class="clearfix">
+<aside class="app-sidebar">
+	<form action ="{% url  'core:filterdaywinkel'  %}{{today}}/{{month}}/{{year}}/" method = "get">{% csrf_token %} 
+	   
+		{% for winkel in winkels %}
+			<div class="clearfix">
+				<a class="treeview-item" href="{% url  'core:filterdaywinkel' %}{{today}}/{{month}}/{{year}}/?winkel={{ winkel.pk }}">
+					<input   type="checkbox" class = "checked" name = "winkel" value="{{winkel.pk}}">
+					
+				<span  class="form-check-label" >{{ winkel.name }}</span></a>
+
+				
+
+				
+			</div>
+			
+		{%endfor%}
+		<button type="submit" class="btn btn-info left"> Find </button>
+		<button type="submit" class="btn btn-info left" href="{% url  'core:calendar' %}" >Filter wissen </button>		
+	</form>
+  </aside>
+</div>
+
+{%endblock%} -->
+
+<div class="clearfix">
+  <a class="btn btn-info left" href="{% url 'core:calendar' %}"> Kalender </a>
+	<a class="btn btn-info left" href="{{ prev_day }}"> Vorige dag </a>
+	<a class="btn btn-info right" href="{{ next_day }}"> Volgende dag </a>
+	<a class="btn btn-info right" href="{% url 'core:event_new' %}"> Nieuw evenement </a>
+  	<a target="_blank" class="btn btn-info left" href="{{print}}" >PDF afdrukken</a> 
+
+</div>
+<div id="sidebar">
+
+</div>
+<div class="a4-container">
+
+<table class="table">
+	{{ day }}
+</div>
+
+{% endblock %}
+

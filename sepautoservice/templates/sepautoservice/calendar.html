@@ -1,0 +1,37 @@
+
+{% extends 'sepautoservice/base.html' %}
+
+{% block title %}
+Sepautoservice
+{% endblock %}
+
+{% block content %}
+
+
+<div class="clearfix">
+	{% if user.is_authenticated %}
+	
+  		<form  action="{% url 'logout' %}" method="post">{% csrf_token %}
+    	{% csrf_token %}
+    	<button  class="btn btn-info right" type="submit">Afmelden</button>
+		<a class="btn btn-info left" href="{% url 'sepautoservice:calendar' %}?{{ prev_month }}"> Vorige maand </a>
+		<a class="btn btn-info right" href="{% url 'sepautoservice:calendar' %}?{{ next_month }}"> Volgende maand </a>
+		<a class="btn btn-info right" href="{% url 'sepautoservice:event_new' %}"> Nieuw evenement </a>
+		<button type="submit" class="btn btn-info left"><a class="treeview-item" href="{% url  'sepautoservice:levering' %}">Levering</a> </button>
+    	</form>
+    {% else %}
+    	<p>Please login to see this page.</p>
+    {% endif %}
+	
+	
+
+	
+
+</div>
+{% load l10n %}
+
+{% localize on %}
+{{ calendar }}
+{% endlocalize %}
+
+{% endblock %}

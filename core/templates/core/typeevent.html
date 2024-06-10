@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Calendar
+{% endblock %}
+
+{% block content %}
+<div class="clearfix">
+<!--form action ="{% url  'core:calendar'  %}" method = "get"-->  
+    {% for typeevent in typeevents %}
+        <div class="form-check"> 
+            
+            <input   type="checkbox" class = "checked" name = "calendar" value="{{typeevent.pk}}"><span   class="pan editContext">
+                <a class="treeview-item" href="{% url  'core:calendar'   %}{{ typeevent.pk }}">{{ typeevent.name }}</a>
+            </span>
+
+
+            
+        </div>
+    {%endfor%}
+
+    <!--button type="submit" class="btn btn-info left"> Find </button>
+    
+</form-->
+</div>
+{% endblock %}
